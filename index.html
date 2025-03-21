@@ -39,6 +39,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
+      justify-content: center;
     }
     .menu-item {
       background-color: white;
@@ -66,13 +67,14 @@
       font-weight: bold;
       margin: 20px 0 10px;
       color: #333;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="navbar">
-    <a onclick="document.getElementById('drinks').scrollIntoView({ behavior: 'smooth' });">Drinks</a>
-    <a onclick="document.getElementById('snacks').scrollIntoView({ behavior: 'smooth' });">Snacks</a>
+    <a onclick="document.getElementById('drinks').scrollIntoView({ behavior: 'smooth', block: 'center' });">Drinks</a>
+    <a onclick="document.getElementById('snacks').scrollIntoView({ behavior: 'smooth', block: 'center' });">Snacks</a>
   </div>
 
   <div class="menu-wrapper">
