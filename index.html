@@ -61,6 +61,22 @@
       color: #666;
       font-size: 18px;
     }
+    .menu-item input {
+      width: 50px;
+      padding: 8px;
+      margin-bottom: 8px;
+    }
+    .menu-item button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .menu-item button:hover {
+      background-color: #45a049;
+    }
     .category-title {
       grid-column: span 2;
       font-size: 24px;
@@ -82,13 +98,17 @@
       <div class="category-title">Drinks</div>
       <div class="menu-item">
         <img src="Monster.png" alt="Drink 1" />
-        <h3>Monster</h3>
-        <p>$2.00</p>
+        <h3>All Monster Flavors</h3>
+        <p>$4.00</p>
+        <input type="number" id="monsterQty" min="1" value="1" />
+        <button onclick="placeOrder('All Monster Flavors', 4.00, 'monsterQty')">Buy</button>
       </div>
       <div class="menu-item">
         <img src="Red bull.png" alt="Drink 2" />
         <h3>Some other flavor</h3>
         <p>$2.00</p>
+        <input type="number" id="redbullQty" min="1" value="1" />
+        <button onclick="placeOrder('Some other flavor', 2.00, 'redbullQty')">Buy</button>
       </div>
     </div>
 
@@ -96,15 +116,31 @@
       <div class="category-title">Snacks</div>
       <div class="menu-item">
         <img src="other goldfish.png" alt="Snack 1" />
-        <h3>Something</h3>
-        <p>$2.00</p>
+        <h3>Flamin Hot Limon Cheetos</h3>
+        <p>$6.00</p>
+        <input type="number" id="cheetosQty" min="1" value="1" />
+        <button onclick="placeOrder('Flamin Hot Limon Cheetos', 6.00, 'cheetosQty')">Buy</button>
       </div>
       <div class="menu-item">
         <img src="GoldFish.png" alt="Snack 2" />
         <h3>Something</h3>
         <p>$2.00</p>
+        <input type="number" id="goldfishQty" min="1" value="1" />
+        <button onclick="placeOrder('Something', 2.00, 'goldfishQty')">Buy</button>
       </div>
     </div>
   </div>
+
+  <script>
+    function placeOrder(item, price, qtyId) {
+      const quantity = document.getElementById(qtyId).value;
+      const subject = encodeURIComponent(`Order for ${item}`);
+      const body = encodeURIComponent(`I would like to order ${quantity} of ${item} at $${price} each.`);
+      const mailtoLink = `mailto:giggadude68@gmail.com?subject=${subject}&body=${body}`;
+
+      window.location.href = mailtoLink;
+      alert('Your order has been placed!');
+    }
+  </script>
 </body>
 </html>
